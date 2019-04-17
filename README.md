@@ -43,23 +43,24 @@ You need to:
 You need first to install Bioconductor
 
 ```
-sudo su - -c "R -e \"source('http://bioconductor.org/biocLite.R')\""
+sudo su - -c "R -e \"install.packages('BiocManager')\""
 ```
 
-Once that is done, you can install `ideal` from GitHub with
+Once that is done, you can install `ideal` with
+
+```
+sudo su - -c "R -e \"BiocManager::install('ideal')\""
+```
+
+You can also install the development version of `ideal` from GitHub with
 
 ```
 # install devtools first
-sudo su - -c "R -e \"BiocInstaller::biocLite('devtools')\""
+sudo su - -c "R -e \"BiocManager::install('devtools')\""
 # and then ideal
-sudo su - -c "R -e \"BiocInstaller::biocLite('federicomarini/ideal')\""
+sudo su - -c "R -e \"BiocManager::install('federicomarini/ideal')\""
 ```
 
-Once `ideal` is on Bioconductor, you can install with
-
-```
-sudo su - -c "R -e \"BiocInstaller::biocLite('ideal')\""
-```
 
 
 ### Setup `ideal` on the server
@@ -96,7 +97,7 @@ server {
     # an index of the applications available in this directory will be shown.
     directory_index off;
 
-    # recommended, to
+    # recommended, to wait for the application to start
     app_init_timeout 250;
   }
   ### TO HERE
